@@ -31,11 +31,13 @@ namespace Liceo
 
             }
 
+
+            Console.WriteLine("Ingrese el documento");
+            Alumno alumn =AH.getAlumnoByDocHelper(connection,Console.ReadLine());
+            Console.WriteLine(alumn.ToString());
+
+
             Console.ReadKey();
-
-
-
-
 
 
 

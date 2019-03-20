@@ -11,6 +11,13 @@ namespace BusinessLogic
     public class AlumnoHelper
     {
 
+        public Alumno getAlumnoByDocHelper(string connString, string documento)
+        {
+            PAlumno DA = new PAlumno();
+            return DA.getAlumnoByDoc(connString, documento);
+
+        }
+
 
         public List<Alumno> listarAlumnoHelper(string connString)
         {

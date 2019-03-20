@@ -66,7 +66,7 @@ namespace DataAccess
                     cm.Connection = context;
 
                     cm.CommandText = "Select idAlumno,nombre,apellido,edad,documento from Alumno";
-                    cm.Parameters.Clear();
+                  
                     SqlDataReader re = cm.ExecuteReader();
 
                     
@@ -103,5 +103,62 @@ namespace DataAccess
 
         }
 
+
+        public Alumno getAlumnoByDoc(string connString, string documento)
+        {
+            Alumno al = null;
+
+            try
+            {
+                SqlConnection context = new SqlConnection(connString);
+
+                using (context)
+                {
+                    context.Open();
+
+                    SqlCommand cm = new SqlCommand();
+                    cm.Connection = context;
+
+                    cm.CommandText = "Select idAlumno,nombre,apellido,edad,documento from Alumno Where documento = @doc";
+                    cm.Parameters.Add("@doc", SqlDbType.VarChar);
+                    cm.Parameters["@doc"].Value = documento;
+                    SqlDataReader re = cm.ExecuteReader();
+
+
+                    if (re.HasRows)
+                    {
+                        while (re.Read())
+                        {
+
+                            int idUnAlumno = re.GetInt32(0);
+                            string nombreUnAlumno = re.GetString(1);
+                            string apellidoUnAlumno = re.GetString(2);
+                            short edadUnAlumno = re.GetInt16(3);
+                            string documentoUnAlumno = re.GetString(4);
+
+
+                             al = new Alumno(nombreUnAlumno, apellidoUnAlumno, edadUnAlumno, documentoUnAlumno, idUnAlumno);
+                            
+
+                        }
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+
+            }
+
+
+            return al;
+
+        
+
+
+    }
     }
 }
