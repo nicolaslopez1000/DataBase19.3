@@ -61,10 +61,7 @@ namespace DataAccess
                 using (context)
                 {
                     context.Open();
-                    //string nombre = "Pepe";
-                   // string apellido = "Loco";
-                   // short edad = 1;
-                   // string documento = "5.150.533-0";
+                    
                     SqlCommand cm = new SqlCommand();
                     cm.Connection = context;
 
