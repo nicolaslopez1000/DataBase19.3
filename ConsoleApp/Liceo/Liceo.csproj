@@ -53,9 +53,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAcces\DataAccess.csproj">
-      <Project>{0d770b73-5d53-45ae-9d13-f22ad8814c4b}</Project>
-      <Name>DataAccess</Name>
+    <ProjectReference Include="..\BusinessEntity\BusinessEntity.csproj">
+      <Project>{FF43E4E8-F1E0-414D-8F51-9E71B82BBC0B}</Project>
+      <Name>BusinessEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{7a825c5d-fcd0-4454-a4aa-e784d2d3cad6}</Project>
+      <Name>BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
