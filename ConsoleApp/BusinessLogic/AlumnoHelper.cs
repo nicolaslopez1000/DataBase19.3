@@ -17,7 +17,15 @@ namespace BusinessLogic
             return DA.getAlumnoByDoc(connString, documento);
 
         }
+        
+        public string editarAlumnoById(string connString, long idAlumno,string nombre, string apellido,string documento, short edad)
+        {
 
+
+            PAlumno DA = new PAlumno();
+            return DA.updateAlumnoById(connString, idAlumno,documento,nombre,edad,apellido);
+
+        }
 
         public List<Alumno> listarAlumnoHelper(string connString)
         {
@@ -49,6 +57,34 @@ namespace BusinessLogic
 
         }
 
+        public string insertarAlumnoAndMateriaHelper(string connString, string nombre, string apellido, short edad, string documento,List<long> colMaterias)
+        {
+
+            PAlumno DA = new PAlumno();
+            bool operacion = DA.insertAlumnoAndMaterias(connString, nombre, apellido, edad, documento,colMaterias);
+            if (operacion)
+            {
+
+                return "Alumno agregado con exito";
+
+            }
+            else
+            {
+
+                return "No se ha podido agregar el Alumno, intente denuevo más tarde";
+
+            }
+
+        }
+
+        public string eliminarAlumnoById(string connString, long idAlumno)
+        {
+
+            PAlumno DA = new PAlumno();
+            return DA.eliminarAlumnoById(connString,idAlumno);
+
+
+        }
 
 
     }
